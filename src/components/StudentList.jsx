@@ -3,9 +3,11 @@ import Student from './Student';
 
 const StudentList = (props) => {
 
-    const studentComponents = props.students.map(student =>{
+    const studentComponents = props.students.map(student, index =>{
         return (
-            <li><Student name={student.nameData} email={student.emailData}></Student></li>
+            <li key={index}>
+                <Student name={student.nameData} email={student.emailData}></Student>
+            </li>
         );
     });
     return (
