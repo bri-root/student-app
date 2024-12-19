@@ -2,14 +2,12 @@ import './StudentList.css';
 import Student from './Student';
 
 const StudentList = (props) => {
-
-    const studentComponents = props.students.map(student, index =>{
+    const studentComponents = props.students.map(student => {
         return (
-            <li key={index}>
-                <Student name={student.nameData} email={student.emailData}></Student>
-            </li>
+            <li><Student name={student.nameData} email={student.emailData}></Student></li>
         );
     });
+
     return (
         <section>
             <h2>Student List</h2>
