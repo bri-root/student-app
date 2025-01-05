@@ -7,8 +7,7 @@ const kInitialStudentData = [
   {
     id: 1,
     nameData: 'Ada',
-    emailData: 'ada@dev.org',
-    isPresentData: false,
+    emailData: 'ada@dev.org',    isPresentData: false,
   },
   {
     id: 2,
@@ -52,6 +51,18 @@ function App() {
     setStudentData([]);
   };
 
+  const addStudentData = ({nameData, emailData}) => {
+    setStudentData(studentData => {
+      return [...studentData, {
+        id: Math.max(0, ...studentData.map(student => student.id)) +1,
+        nameData,
+        emailData,
+        isPresentData:false,
+      }];
+    });
+  };
+
+  
   return (
     <main>
       <h1>Attendance</h1>
@@ -61,7 +72,8 @@ function App() {
       students={studentData}
       onStudentPresenceToggle={toggleStudentPresence}
       ></StudentList>
-      <NewStudentForm></NewStudentForm>
+      <NewStudentForm
+      onStudentAdd={addStudentData}></NewStudentForm>
     </main>
   );
 }
