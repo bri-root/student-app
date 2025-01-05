@@ -7,29 +7,34 @@ const NewStudentForm = () => {
         email: '',
     });
 
-    const handleNameChange = (event) => {
-        setFormFields({
-            ...formFields,
-            name: event.target.value,
-        })
+    // const handleNameChange = (event) => {
+    //     setFormFields({
+    //         ...formFields,
+    //         name: event.target.value,
+    //     })
+    // };
+
+    // const handleEmailChange = (event) => {
+    //     setFormFields({
+    //         ...formFields,
+    //         email: event.target.value,
+    //     })
+    // };
+
+    const handleChange = (event) => {
+        setFormFields({...formFields, [event.target.name]: event.target.value});
+
     };
 
-    const handleEmailChange = (event) => {
-        setFormFields({
-            ...formFields,
-            email: event.target.value,
-        })
-    };
-
-    return (
+        return (
         <form>
             <div>
-                <label htmlFor="fullName">Name:</label>
+            <label htmlFor="name">Name:</label>
                 <input
-                    id="fullName"
-                    name="fullName"
+                    id="name"
+                    name="name"
                     value={formFields.name}
-                    onChange={handleNameChange} />
+                    onChange={handleChange} />
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
@@ -37,7 +42,7 @@ const NewStudentForm = () => {
                     id="email"
                     name="email"
                     value={formFields.email}
-                    onChange={handleEmailChange} />
+                    onChange={handleChange} />
             </div>
             <input
                 type="submit"
