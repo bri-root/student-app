@@ -1,6 +1,7 @@
 import StudentList from './components/StudentList';
 import ClassInfo from './components/ClassInfo';
 import { useState } from 'react';
+import NewStudentForm from './components/NewStudentForm';
 
 const kInitialStudentData = [
   {
@@ -46,14 +47,21 @@ function App() {
     setStudentData(students);
   };
 
+  // function to delete all student data
+  const deleteStudents = () => {
+    setStudentData([]);
+  };
+
   return (
     <main>
       <h1>Attendance</h1>
       <ClassInfo memberCount={studentData.length}></ClassInfo>
+      <button onClick={() => deleteStudents()}>Delete All Students!</button>
       <StudentList 
       students={studentData}
       onStudentPresenceToggle={toggleStudentPresence}
       ></StudentList>
+      <NewStudentForm></NewStudentForm>
     </main>
   );
 }
